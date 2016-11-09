@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+    <title>jQuery实现CheckBox全选、全不选</title>
+    <script src="jquery.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var checkAll = $('#checkAll');
+
+            var subBox = $("input[name='subBox']");
+
+            checkAll.click(function () {
+                subBox.attr("checked", this.checked);
+            });
+
+            subBox.click(function () {
+                checkAll.attr("checked", subBox.length == $("input[name='subBox']:checked").length ? true : false);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <label>
+            <input name="checkAll" id="checkAll" type="checkbox" onclick="cli('sub','checkAll')" />全选
+        </label>
+        <input name="subBox" class="sub" type="checkbox" />项1
+        <input name="subBox" class="sub" type="checkbox" />项2
+        <input name="subBox" class="sub" type="checkbox" />项3
+        <input name="subBox" class="sub" type="checkbox" />项4
+    </div>
+    <script>
+        //js实现全选 全不选功能
+        /*function cli(classNmae,id) {
+            var collid = document.getElementById(id);
+            var coll = document.getElementsByClassName(classNmae);
+            if (collid.checked) {
+                for (var i = 0; i < coll.length; i++)
+                    coll[i].checked = true;
+            } else {
+                for (var i = 0; i < coll.length; i++)
+                    coll[i].checked = false;
+            }    
+        }*/
+    </script>
+</body>
+
+</html>
